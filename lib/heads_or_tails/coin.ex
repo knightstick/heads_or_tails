@@ -9,7 +9,7 @@ defmodule HeadsOrTails.Coin do
   end
 
   def flip(_coin) do
-    %HeadsOrTails.Coin{value: get_random_value}
+    %HeadsOrTails.Coin{value: get_random_value()}
   end
 
   defp get_random_value do
