@@ -4,6 +4,9 @@ defmodule HeadsOrTails.Coin do
   def new do
     %HeadsOrTails.Coin{}
   end
+  def new(value) do
+    %HeadsOrTails.Coin{value: value}
+  end
 
   def flip(_coin) do
     %HeadsOrTails.Coin{value: get_random_value}

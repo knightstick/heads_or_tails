@@ -13,4 +13,9 @@ defmodule HeadsOrTailsCoinTest do
     coin = Coin.new |> Coin.flip
     assert Enum.member?([:heads, :tails], coin.value)
   end
+
+  test "seeding heads" do
+    coin = Coin.new(:heads)
+    assert coin.value == :heads
+  end
 end

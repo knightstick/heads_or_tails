@@ -14,4 +14,17 @@ defmodule HeadsOrTailsGameTest do
     %{coin: coin} = Game.new |> Game.flip_coin
     refute coin.value == nil
   end
+
+  test "getting value" do
+    value = Game.new |> Game.coin_value
+    assert value == nil
+    value = Game.new |> Game.flip_coin |> Game.coin_value
+    refute value == nil
+  end
+
+  test "creating with a coin" do
+    tails_coin = HeadsOrTails.Coin.new(:tails)
+    value = Game.new(tails_coin) |> Game.coin_value
+    assert value == :tails
+  end
 end
