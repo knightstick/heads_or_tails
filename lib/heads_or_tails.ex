@@ -1,0 +1,2 @@
+defmodule HeadsOrTails do
+end
