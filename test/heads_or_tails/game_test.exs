@@ -24,7 +24,7 @@ defmodule HeadsOrTailsGameTest do
 
   test "creating with a coin" do
     tails_coin = HeadsOrTails.Coin.new(:tails)
-    value = Game.new(tails_coin) |> Game.coin_value
+    value = tails_coin |> Game.new |> Game.coin_value
     assert value == :tails
   end
 end
