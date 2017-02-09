@@ -21,7 +21,7 @@ defmodule HeadsOrTailsGameServerTest do
   test "new game coin value" do
     game = HeadsOrTails.Game.new
     {:reply, value, _state} =
-      GameServer.handle_call({:coin_value}, self, game)
+      GameServer.handle_call({:coin_value}, self(), game)
 
     assert value == nil
   end
@@ -30,7 +30,7 @@ defmodule HeadsOrTailsGameServerTest do
     heads_coin = HeadsOrTails.Coin.new(:heads)
     game = HeadsOrTails.Game.new(heads_coin)
     {:reply, value, _state} =
-      GameServer.handle_call({:coin_value}, self, game)
+      GameServer.handle_call({:coin_value}, self(), game)
 
     assert value == :heads
   end
