@@ -13,6 +13,14 @@ defmodule HeadsOrTails.BetTable do
     %HeadsOrTails.BetTable{ table | tails: bet_amount(tails, id, amount) }
   end
 
+  def calculate_winnings(table, value) do
+    winners = Map.get(table, value)
+
+    Enum.reduce(winners, %{}, fn({id, amount}, acc) ->
+      Map.put(acc, id, amount * 2)
+    end)
+  end
+
   defp bet_amount(map, id, amount) do
     Map.merge(map, %{id => amount}, fn _k, v1, v2 ->
       v1 + v2

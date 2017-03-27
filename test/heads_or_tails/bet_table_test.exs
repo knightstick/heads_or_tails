@@ -37,4 +37,18 @@ defmodule HeadsOrTailsBetTableTest do
     %{tails: tails_bets} = bets
     assert Map.get(tails_bets, "123") == 30
   end
+
+  test "calculating winners" do
+    table = BetTable.new |>
+      BetTable.bet("123", :tails, 10) |>
+      BetTable.bet("456", :heads, 20) |>
+      BetTable.bet("123", :heads, 30)
+
+    %{"123" => first, "456" => second } =
+      BetTable.calculate_winnings(table, :heads)
+
+    # return stake, plus winnings
+    assert first == 60
+    assert second == 40
+  end
 end
